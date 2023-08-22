@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="header">
+        <span>
+            <ng-container *ngIf="activeButtonGroup === 'task'">
+              <app-button
+                *ngFor="let button of getButtonsData()"
+                [text]="button.text"
+                [color]="button.color"
+              ></app-button>
+            </ng-container>
+          </span>
+          <span>
+            <ng-container *ngIf="activeButtonGroup === 'step'">
+              <app-button
+                *ngFor="let button of getButtonsData()"
+                [text]="button.text"
+                [color]="button.color"
+              ></app-button>
+            </ng-container>
+          </span>
+   </div>
+    <app-tree (nodeDoubleClick)="nodeDoubleClicked($event)"></app-tree>
+</div>

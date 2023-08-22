@@ -1,0 +1,14 @@
+.container {
+    max-width: 50rem;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: 300px;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
