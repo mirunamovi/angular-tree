@@ -19,13 +19,19 @@ Install dependencies
 ```bash
   npm install
 ```
+
 Install Angular Material
 
 ```bash
   ng add @angular/material
 ```
+Run the JSON server for the first time.
 
+```bash
+json-server --watch db.json
+```
 Run `ng serve` for Angular.
+
 Run `npn run json:server` for server.
 
 ## Preview
