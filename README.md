@@ -5,7 +5,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/mirunamovi/PeakGeek-project.git"
+  git clonehttps://github.com/mirunamovi/angular-tree.git
 ```
 
 Go to the project directory
