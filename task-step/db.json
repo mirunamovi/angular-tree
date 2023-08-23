@@ -1,0 +1,49 @@
+{ "TREE_DATA" : [
+{
+    "name": "Task_1",
+    "children": [
+      { "name": "Step_1_1", 
+        "owner": "Marcel"
+      }, 
+      { "name": "Step_1_2", 
+        "owner": "Joe",
+        "children": [
+          { "name": "Step_1_2_1",
+            "owner": "anonymous",
+            "children": [
+              { "name": "Step_1_2_1_1",
+                "owner": "anonymous"
+              }
+            ]
+         },
+         {  "name": "Step_1_2_2",
+            "owner": "anonymous"
+         }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Task_2",
+    "children": [
+      { "name": "Step_2_1", 
+        "owner": "Bob",
+        "children": [
+          { "name": "Step_2_1_1",
+            "owner": "Bob & Alice"
+         },
+         {  "name": "Step_2_1_2",
+            "owner": "Bob & Max"
+         }
+        ]
+      },
+      {  "name": "Step_2_2",
+         "owner": "Joe"
+      },
+      {  "name": "Step_2_3",
+         "owner": "Joe"
+      }
+      ]
+  }
+]
+}
