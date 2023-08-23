@@ -5,7 +5,7 @@
 Clone the project
 
 ```bash
-  git clonehttps://github.com/mirunamovi/angular-tree.git
+  git clone https://github.com/mirunamovi/angular-tree.git
 ```
 
 Go to the project directory
@@ -19,12 +19,11 @@ Install dependencies
 ```bash
   npm install
 ```
+Install Angular Material
 
 ```bash
   ng add @angular/material
 ```
-
-Start the server
 
 Run `ng serve` for Angular.
 Run `npn run json:server` for server.
