@@ -1,5 +1,31 @@
 # angular-tree
 
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/mirunamovi/PeakGeek-project.git"
+```
+
+Go to the project directory
+
+```bash
+  cd task-step
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+```bash
+  ng add @angular/material
+```
+
+Start the server
+
 Run `ng serve` for Angular.
 Run `npn run json:server` for server.
 
