@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { TreeComponent } from './tree/tree.component';
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
