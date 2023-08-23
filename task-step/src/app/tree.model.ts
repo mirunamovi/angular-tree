@@ -1,7 +1,8 @@
-export interface TreeNode {
-    id: number;
+export interface Tree {
+    id: string;
     name: string;
     type: 'task' | 'step';
     owner?: string; 
-    children?: TreeNode[];
+    children?: Tree[];
+    parentId?: string | null;
   }

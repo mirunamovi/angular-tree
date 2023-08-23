@@ -6,6 +6,7 @@
                 *ngFor="let button of getButtonsData()"
                 [text]="button.text"
                 [color]="button.color"
+                (btnclick)="performAction(button.action)"
               ></app-button>
             </ng-container>
           </span>
@@ -15,6 +16,8 @@
                 *ngFor="let button of getButtonsData()"
                 [text]="button.text"
                 [color]="button.color"
+                (btnclick)="performAction(button.action)"
+
               ></app-button>
             </ng-container>
           </span>

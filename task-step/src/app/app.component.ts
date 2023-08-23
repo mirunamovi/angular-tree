@@ -1,16 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ButtonService } from './button.service';
+import {Tree} from './tree.model';
+import { TreeService } from './tree.service';
+import { NodeDialogComponent } from './node-dialog/node-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
-interface Step {
-  name: string;
-  owner: string;
-  children?: Step[];
-}
 
-interface Task {
-  name: string;
-  children?: Step[];
-} 
 
 @Component({
   selector: 'app-root',
@@ -21,10 +16,9 @@ export class AppComponent {
   title = 'task-step';
 
   activeButtonGroup?: 'task' | 'step'; 
-  isTaskNodeClicked: boolean = false;
-  isStepNodeClicked: boolean = false;
+  selectedNode: Tree | null = null;
 
-  constructor(private buttonService: ButtonService) {}
+  constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
 
   getButtonsData(): { text: string; color: string; action: string }[] {
     if (this.activeButtonGroup === 'task') {
@@ -36,30 +30,57 @@ export class AppComponent {
   }
 
 
-  nodeDoubleClicked(eventData: { event: Event, node: any }): void {
-    const node = eventData.node;
-    if (this.isStepNode(node)) {
+  nodeDoubleClicked(eventData: { event: Event, node: Tree }): void {
+    this.selectedNode = eventData.node;
+    if (this.selectedNode.type === 'step') {
       this.activeButtonGroup = 'step';
-      this.isStepNodeClicked = true;
-      this.isTaskNodeClicked = false;
 
-    } else if (this.isTaskNode(node)) {
+    } else if (this.selectedNode.type === 'task') {
       this.activeButtonGroup = 'task';
-      this.isTaskNodeClicked = true;
-      this.isStepNodeClicked = false;
+  
     }
     
   }
 
-  isStepNode(node: Step | Task): node is Step {
-
-    return (node as Step).owner !== undefined;
+  performAction(action: string): void {
+    if (!this.selectedNode) {
+      return; // No node selected, exit early
+    }
+  
+    switch (action) {
+      case 'add':
+        this.openNodeDialog(false, this.selectedNode);
+        break;
+      case 'edit':
+        this.openNodeDialog(true, this.selectedNode);
+        break;
+      case 'delete':
+        this.deleteNode(this.selectedNode);
+        break;
+      // ... other actions
+    }
   }
 
-  isTaskNode(node: Step | Task): node is Step {
-
-    return (node as Step).owner == undefined;
+  openNodeDialog(editNode: boolean, parentNode: Tree | null, node?: Tree): void {
+    const dialogRef = this.dialog.open(NodeDialogComponent, {
+      data: { editNode, parentNode, node: node || { type: 'task' } },
+    });
+  
+    dialogRef.afterClosed().subscribe((result: Tree | undefined) => {
+      if (result) {
+        this.treeService.loadTreeData();
+      }
+    });
   }
+
+  deleteNode(node: Tree): void {
+    if (confirm(`Are you sure you want to delete ${node.name}?`)) {
+      this.treeService.deleteNode(node.id).subscribe(() => {
+        this.treeService.loadTreeData(); // Refresh the tree data after deletion
+      });
+    }
+  }
+
 
   buttonsDataTask(): { text: string; color: string; action: string }[] {
     return this.buttonService.getButtonsDataTasks();
