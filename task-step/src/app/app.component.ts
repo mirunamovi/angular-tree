@@ -20,7 +20,7 @@ interface Task {
 export class AppComponent {
   title = 'task-step';
 
-  activeButtonGroup: 'task' | 'step' = 'step'; // Default
+  activeButtonGroup?: 'task' | 'step'; 
   isTaskNodeClicked: boolean = false;
   isStepNodeClicked: boolean = false;
 
@@ -38,19 +38,15 @@ export class AppComponent {
 
   nodeDoubleClicked(eventData: { event: Event, node: any }): void {
     const node = eventData.node;
-    console.log("AAA")
     if (this.isStepNode(node)) {
       this.activeButtonGroup = 'step';
       this.isStepNodeClicked = true;
       this.isTaskNodeClicked = false;
 
-      console.log('step');
     } else if (this.isTaskNode(node)) {
       this.activeButtonGroup = 'task';
       this.isTaskNodeClicked = true;
       this.isStepNodeClicked = false;
-      console.log('task');
-
     }
     
   }
