@@ -32,7 +32,7 @@ Install Angular Material
 Run the JSON server for the first time.
 
 ```bash
-json-server --watch db.json
+  json-server --watch db.json
 ```
 Run `ng serve` for Angular.
 
