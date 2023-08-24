@@ -21,7 +21,7 @@ Install dependencies
 ```
 
 ```bash
-npm install uuid
+  npm install uuid
 ```
 
 Install Angular Material
