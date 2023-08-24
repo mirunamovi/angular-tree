@@ -30,8 +30,8 @@ export class NodeDialogComponent {
   
     // Create a dynamic form based on node type
     this.nodeForm = this.fb.group({
-      name: [this.node.name],
-      owner: [this.node.owner || ''],
+      name: [null],
+      owner: [null],
     });
   }
 
@@ -53,14 +53,14 @@ export class NodeDialogComponent {
         this.dialogRef.close(result);
       });
     } else {
-      const updatedNode: Tree = {
+      const addedNode: Tree = {
         id: uuidv4(),
         type: this.node.type,
         name: this.nodeForm.value.name,
         owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
         parentId: this.parentNode ? this.parentNode.id : null
       };
-      this.treeService.addNode(this.node.parentId, updatedNode).subscribe((result) => {
+      this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
         this.dialogRef.close(result);
       });
     }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatTreeModule} from '@angular/material/tree';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -11,18 +10,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './button/button.component';
 import { NodeDialogComponent } from './node-dialog/node-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TreeModule } from './tree/tree.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ButtonComponent,
-    NodeDialogComponent
+    NodeDialogComponent,
     
   ],
   imports: [
     BrowserModule,
-    TreeComponent,
+    TreeModule,
     HttpClientModule,
     MatButtonModule,
     MatFormFieldModule,

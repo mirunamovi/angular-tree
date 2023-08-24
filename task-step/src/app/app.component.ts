@@ -17,7 +17,6 @@ export class AppComponent {
 
   activeButtonGroup?: 'task' | 'step'; 
   selectedNode: Tree | null = null;
-
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
 
   getButtonsData(): { text: string; color: string; action: string }[] {
