@@ -44,7 +44,7 @@ export class AppComponent {
 
   performAction(action: string): void {
     if (!this.selectedNode) {
-      return; // No node selected, exit early
+      return; 
     }
   
     switch (action) {
@@ -57,12 +57,12 @@ export class AppComponent {
       case 'delete':
         this.deleteNode(this.selectedNode);
         break;
-      // ... other actions
     }
   }
 
   openNodeDialog(editNode: boolean, parentNode: Tree | null, node?: Tree): void {
     const dialogRef = this.dialog.open(NodeDialogComponent, {
+      width: '250px',
       data: { editNode, parentNode, node: node || { type: 'task' } },
     });
   
@@ -76,7 +76,7 @@ export class AppComponent {
   deleteNode(node: Tree): void {
     if (confirm(`Are you sure you want to delete ${node.name}?`)) {
       this.treeService.deleteNode(node.id).subscribe(() => {
-        this.treeService.loadTreeData(); // Refresh the tree data after deletion
+        this.treeService.loadTreeData(); 
       });
     }
   }
