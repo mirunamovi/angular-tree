@@ -15,7 +15,7 @@ export class TreeComponent implements OnInit{
 
 
   treeControl = new NestedTreeControl<Tree>(node => node.children);
-  dataSource = new BehaviorSubject<Tree[]>([]);
+  dataTree= new BehaviorSubject<Tree[]>([]);
 
   @Output() nodeDoubleClick = new EventEmitter<{ event: Event, node: Tree }>();
 

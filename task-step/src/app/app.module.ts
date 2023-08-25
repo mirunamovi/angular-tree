@@ -5,7 +5,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
-import { TreeComponent } from './tree/tree.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonComponent } from './button/button.component';
 import { NodeDialogComponent } from './node-dialog/node-dialog.component';
