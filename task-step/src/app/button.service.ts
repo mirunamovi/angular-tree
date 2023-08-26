@@ -9,14 +9,14 @@ export class ButtonService {
 
   
   private buttonsDataTasks = [
-    { text: 'Edit ', color: 'magenta', action: 'edit' },
-    { text: 'Delete ', color: 'red', action: 'delete' },
+    { text: 'Edit Task ', color: 'magenta', action: 'edit' },
+    { text: 'Delete Task', color: 'red', action: 'delete' },
     { text: 'Add Step in ', color: 'purple', action: 'add' }
   ];
 
   private buttonsDataSteps = [
-    { text: 'Edit ', color: 'magenta', action: 'edit' },
-    { text: 'Delete ', color: 'red', action: 'delete' },
+    { text: 'Edit Step ', color: 'magenta', action: 'edit' },
+    { text: 'Delete Step ', color: 'red', action: 'delete' },
     { text: 'Add Step in ', color: 'purple', action: 'add' }
 
   ];

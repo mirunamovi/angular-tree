@@ -4,7 +4,7 @@
         <app-button
         [text]="addTaskText"
         [color]="addTaskColor"
-        (btnClick)="performAction(addTaskActions)"
+        (btnClick)="addTask()"
         ></app-button>
       </span>
         <span>
@@ -17,16 +17,6 @@
               ></app-button>
             </ng-container> 
           </span>
-          <!-- <span>
-            <ng-container *ngIf="activeButtonGroup === 'step'">
-              <app-button
-                *ngFor="let button of getButtonsData()"
-                [text]="button.text + nodeName"
-                [color]="button.color"
-                (btnClick)="performAction(button.action)"
-              ></app-button>
-            </ng-container>
-          </span> -->
    </div>
     <app-tree (nodeDoubleClick)="nodeDoubleClicked($event)"></app-tree>
 </div>

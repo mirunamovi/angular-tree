@@ -4,7 +4,7 @@
       <mat-form-field>
         <input matInput formControlName="name" placeholder="Name" />
       </mat-form-field>
-      <mat-form-field *ngIf="node.type === 'step'">
+      <mat-form-field *ngIf="node.type === 'step' || action === 'add'">
         <input matInput formControlName="owner" placeholder="Owner" />
       </mat-form-field>
     </form>

@@ -30,6 +30,7 @@ export class AppComponent {
   addTaskText: string = "Add Task";
   addTaskColor: string = "green";
   addTaskActions: string = "add";
+  @Input() isAdd: boolean = false;
 
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
@@ -66,10 +67,10 @@ export class AppComponent {
   
     switch (action) {
       case 'add':
-        this.openNodeDialog(false, this.selectedNode, this.selectedNode);
+        this.openNodeDialog(false, this.selectedNode, this.selectedNode, action);
         break;
       case 'edit':
-        this.openNodeDialog(true, this.selectedNode, this.selectedNode);
+        this.openNodeDialog(true, this.selectedNode, this.selectedNode, action);
         break;
       case 'delete':
         this.deleteNode(this.selectedNode);
@@ -77,10 +78,14 @@ export class AppComponent {
     }
   }
 
-  openNodeDialog(editNode: boolean, parentNode: Tree | null, node?: Tree): void {
+  addTask(){
+    this.openNodeDialog(false);
+  }
+
+  openNodeDialog(editNode: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
     const dialogRef = this.dialog.open(NodeDialogComponent, {
       width: '250px',
-      data: { editNode, parentNode, node: node || { type: 'task' } },
+      data: { editNode, parentNode, node, action},
     });
   
     dialogRef.afterClosed().subscribe((result: Tree | undefined) => {

@@ -18,21 +18,22 @@ export class NodeDialogComponent {
   node: Tree;
   nodeForm: FormGroup;
   parentNode: Tree | null;
+  action: string;
 
   constructor(
     public dialogRef: MatDialogRef<NodeDialogComponent>,
     private fb: FormBuilder,
     private treeService: TreeService,
-    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree }
+    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string }
   ) {
     this.editNode = data.editNode;
     this.parentNode = data.parentNode;
     this.node = { ...data.node };
-  
-    // Create a dynamic form based on node type
+    this.action = data.action;
+   
     this.nodeForm = this.fb.group({
-      name: [null],
-      owner: [null],
+      name: [this.node.name],
+      owner: [this.node.owner],
     });
   }
 
@@ -48,7 +49,8 @@ export class NodeDialogComponent {
         type: this.node.type,
         name: this.nodeForm.value.name,
         owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
-        parentId: this.parentNode ? this.parentNode.id : null
+        parentId: this.parentNode ? this.parentNode.id : null,
+        children: this.node.children
       };
       this.treeService.editNode(this.node.id, updatedNode).subscribe((result) => {
         this.dialogRef.close(result);
@@ -59,7 +61,8 @@ export class NodeDialogComponent {
         type: this.node.type,
         name: this.nodeForm.value.name,
         owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
-        parentId: this.parentNode ? this.parentNode.id : null
+        parentId: this.parentNode ? this.parentNode.id : null,
+        children: this.node.children
       };
       this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
         this.dialogRef.close(result);
