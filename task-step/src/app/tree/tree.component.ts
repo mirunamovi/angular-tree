@@ -6,32 +6,31 @@ import {NestedTreeControl} from '@angular/cdk/tree';
 import { BehaviorSubject } from 'rxjs';
 import { TreeService } from '../tree.service';
 import { CommonModule } from '@angular/common';
+import {Tree} from '../tree.model';
 
 
-interface Step {
-  name: string;
-  owner: string;
-  children?: Step[];
-}
+// interface Step {
+//   name: string;
+//   owner: string;
+//   children?: Step[];
+// }
 
-interface Task {
-  name: string;
-  children?: Step[];
-}
+// interface Task {
+//   name: string;
+//   children?: Step[];
+// }
 
 @Component({
   selector: 'app-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.css'],
-  standalone: true,
-  imports: [MatTreeModule, MatButtonModule, MatIconModule, CommonModule],
 
 })
 export class TreeComponent implements OnInit{
 
 
-  treeControl = new NestedTreeControl<Task>(node => node.children);
-  dataSource = new BehaviorSubject<Task[]>([]);
+  treeControl = new NestedTreeControl<Tree>(node => node.children);
+  dataSource = new BehaviorSubject<Tree[]>([]);
 
   @Output() nodeDoubleClick = new EventEmitter<{ event: Event, node: any }>();
 
@@ -52,11 +51,11 @@ export class TreeComponent implements OnInit{
     });
   }
 
-  hasChild = (_: number, node: Task) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: Tree) => !!node.children && node.children.length > 0;
 
-  isStepNode(node: Step | Task): node is Step {
-    return (node as Step).owner !== undefined;
-  }
+  // isStepNode(node: Tree): node is Step {
+  //   return (node as Step).owner !== undefined;
+  // }
 
   onNodeDoubleClick(event: Event, node: any): void {
     event.stopPropagation(); // Stop event propagation
