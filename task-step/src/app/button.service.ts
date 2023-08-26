@@ -7,16 +7,18 @@ export class ButtonService {
 
   constructor() { }
 
+  
   private buttonsDataTasks = [
-    { text: 'Add Task', color: 'purple', action: 'add' },
-    { text: 'Edit Task', color: 'magenta', action: 'edit' },
-    { text: 'Delete Task', color: 'red', action: 'delete' }
+    { text: 'Edit ', color: 'magenta', action: 'edit' },
+    { text: 'Delete ', color: 'red', action: 'delete' },
+    { text: 'Add Step in ', color: 'purple', action: 'add' }
   ];
 
   private buttonsDataSteps = [
-    { text: 'Add Step', color: 'purple', action: 'add' },
-    { text: 'Edit Step', color: 'magenta', action: 'edit' },
-    { text: 'Delete Step', color: 'red', action: 'delete' }
+    { text: 'Edit ', color: 'magenta', action: 'edit' },
+    { text: 'Delete ', color: 'red', action: 'delete' },
+    { text: 'Add Step in ', color: 'purple', action: 'add' }
+
   ];
 
   getButtonsDataTasks(): { text: string; color: string; action: string }[] {
@@ -26,4 +28,5 @@ export class ButtonService {
   getButtonsDataSteps(): { text: string; color: string; action: string }[] {
     return this.buttonsDataSteps;
   }
+
 }

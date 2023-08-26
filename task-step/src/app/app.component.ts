@@ -24,15 +24,23 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppComponent {
   title = 'task-step';
 
-  activeButtonGroup: 'task' | 'step' = 'task'; 
+  activeButtonGroup: 'task' | 'step' | null = null; 
   selectedNode: Tree | null = null;
+  nodeName: string = " ";
+  addTaskText: string = "Add Task";
+  addTaskcolor: string = "green";
+
+
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
+  
 
   getButtonsData(): { text: string; color: string; action: string }[] {
     if (this.activeButtonGroup === 'task') {
       return this.buttonService.getButtonsDataTasks();
     } else if (this.activeButtonGroup === 'step') {
+      return this.buttonService.getButtonsDataSteps();
+    } else {
       return this.buttonService.getButtonsDataSteps();
     }
     return []; 
@@ -40,12 +48,13 @@ export class AppComponent {
 
   nodeDoubleClicked(eventData: { event: Event, node: Tree }): void {
     this.selectedNode = eventData.node;
+    this.nodeName = this.selectedNode.name;
     if (this.selectedNode.type === 'step') {
       this.activeButtonGroup = 'step';
 
     } else if (this.selectedNode.type === 'task') {
       this.activeButtonGroup = 'task';
-  
+
     }
     
   }
@@ -57,10 +66,10 @@ export class AppComponent {
   
     switch (action) {
       case 'add':
-        this.openNodeDialog(false, this.selectedNode);
+        this.openNodeDialog(false, this.selectedNode, this.selectedNode);
         break;
       case 'edit':
-        this.openNodeDialog(true, this.selectedNode);
+        this.openNodeDialog(true, this.selectedNode, this.selectedNode);
         break;
       case 'delete':
         this.deleteNode(this.selectedNode);
@@ -96,6 +105,8 @@ export class AppComponent {
   buttonsDataStep(): { text: string; color: string; action: string }[] {
     return this.buttonService.getButtonsDataSteps();
   }
+
+  
 
 
 

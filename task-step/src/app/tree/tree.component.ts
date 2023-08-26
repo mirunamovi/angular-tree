@@ -33,6 +33,7 @@ export class TreeComponent implements OnInit{
   dataSource = new BehaviorSubject<Tree[]>([]);
 
   @Output() nodeDoubleClick = new EventEmitter<{ event: Event, node: any }>();
+  @Output() nodeDoubleClickforSelected = new EventEmitter<{ event: Event, node: any }>();
 
 
 
@@ -59,6 +60,7 @@ export class TreeComponent implements OnInit{
 
   onNodeDoubleClick(event: Event, node: any): void {
     event.stopPropagation(); // Stop event propagation
+    this.isTaskNodeClicked === !this.isTaskNodeClicked;
     this.nodeDoubleClick.emit({ event, node });
   }
 

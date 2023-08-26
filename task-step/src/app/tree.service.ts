@@ -20,11 +20,12 @@ export class TreeService {
 
   constructor(private http: HttpClient) {}
   
-  loadTreeData(): void {
-    this.getTreeData().subscribe((data) => {
+  loadTreeData(){
+    this.getTreeData().subscribe(data => {
       this.dataSource.next(data);
     });
   }
+
 
   getTreeData(): Observable<Tree[]> {
     return this.http.get<Tree[]>(`${this.apiUrl}`);
