@@ -28,8 +28,8 @@ export class AppComponent {
   selectedNode: Tree | null = null;
   nodeName: string = " ";
   addTaskText: string = "Add Task";
-  addTaskcolor: string = "green";
-
+  addTaskColor: string = "green";
+  addTaskActions: string = "add";
 
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}

@@ -3,8 +3,8 @@
       <span>
         <app-button
         [text]="addTaskText"
-        [color]="addTaskcolor"
-
+        [color]="addTaskColor"
+        (btnClick)="performAction(addTaskActions)"
         ></app-button>
       </span>
         <span>

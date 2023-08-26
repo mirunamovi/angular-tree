@@ -39,4 +39,31 @@ export class NodeDialogComponent {
   onCancel(): void {
     this.dialogRef.close();
   }
+
+  onSave(): void {
+    
+    if (this.editNode) {
+      const updatedNode: Tree = {
+        id: this.node.id,
+        type: this.node.type,
+        name: this.nodeForm.value.name,
+        owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
+        parentId: this.parentNode ? this.parentNode.id : null
+      };
+      this.treeService.editNode(this.node.id, updatedNode).subscribe((result) => {
+        this.dialogRef.close(result);
+      });
+    } else {
+      const addedNode: Tree = {
+        id: uuidv4(),
+        type: this.node.type,
+        name: this.nodeForm.value.name,
+        owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
+        parentId: this.parentNode ? this.parentNode.id : null
+      };
+      this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
+        this.dialogRef.close(result);
+      });
+    }
+  }
 }

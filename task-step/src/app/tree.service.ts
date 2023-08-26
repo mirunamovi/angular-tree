@@ -31,6 +31,14 @@ export class TreeService {
     return this.http.get<Tree[]>(`${this.apiUrl}`);
   }
 
+  addNode(parentId: string | null | undefined, newNode: Tree): Observable<Tree> {
+    return this.http.post<Tree>(`${this.apiUrl}`, newNode);
+  }
+
+  editNode(nodeId: string, updatedNode: Tree): Observable<Tree> {
+    return this.http.put<Tree>(`${this.apiUrl}/${nodeId}`, updatedNode);
+  }
+
   deleteNode(nodeId: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${nodeId}`);
   }
