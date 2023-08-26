@@ -9,6 +9,7 @@ import { ButtonService } from '../button.service';
 export class ButtonComponent implements OnInit{
   @Input() text: string = ''; 
   @Input() color: string = '';
+  @Input() action: string = '';
 
   @Output() btnClick = new EventEmitter();
 
@@ -19,7 +20,7 @@ export class ButtonComponent implements OnInit{
   }
 
   onClick() {
-    console.log("OnClick");
+    // console.log("OnClick");
     this.btnClick.emit();
   }
 

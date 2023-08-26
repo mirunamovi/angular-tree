@@ -24,7 +24,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppComponent {
   title = 'task-step';
 
-  activeButtonGroup?: 'task' | 'step'; 
+  activeButtonGroup: 'task' | 'step' = 'task'; 
   selectedNode: Tree | null = null;
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
@@ -51,7 +51,6 @@ export class AppComponent {
   }
 
   performAction(action: string): void {
-    console.log("BBBBBBBBBBB");
     if (!this.selectedNode) {
       return; 
     }
@@ -70,7 +69,6 @@ export class AppComponent {
   }
 
   openNodeDialog(editNode: boolean, parentNode: Tree | null, node?: Tree): void {
-    console.log("AAAAAAAAA");
     const dialogRef = this.dialog.open(NodeDialogComponent, {
       width: '250px',
       data: { editNode, parentNode, node: node || { type: 'task' } },

@@ -10,6 +10,8 @@ import { ButtonComponent } from './button/button.component';
 import { NodeDialogComponent } from './node-dialog/node-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TreeModule } from './tree/tree.module';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { TreeModule } from './tree/tree.module';
     MatButtonModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
