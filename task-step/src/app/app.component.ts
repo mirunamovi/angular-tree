@@ -5,17 +5,6 @@ import { TreeService } from './tree.service';
 import { NodeDialogComponent } from './node-dialog/node-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
-// interface Step {
-//   name: string;
-//   owner: string;
-//   children?: Step[];
-// }
-
-// interface Task {
-//   name: string;
-//   children?: Step[];
-// } 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,7 +19,6 @@ export class AppComponent {
   addTaskText: string = "Add Task";
   addTaskColor: string = "green";
   addTaskActions: string = "add";
-  @Input() isAdd: boolean = false;
 
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
@@ -80,6 +68,7 @@ export class AppComponent {
 
   addTask(){
     this.openNodeDialog(false);
+    
   }
 
   openNodeDialog(editNode: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {

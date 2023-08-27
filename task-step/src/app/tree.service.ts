@@ -27,7 +27,6 @@ export class TreeService {
   }
   
 
-
   getTreeData(): Observable<Tree[]> {
     return this.http.get<Tree[]>(`${this.apiUrl}`);
   }
