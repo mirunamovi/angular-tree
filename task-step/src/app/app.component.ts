@@ -19,7 +19,8 @@ export class AppComponent {
   addTaskText: string = "Add Task";
   addTaskColor: string = "green";
   addTaskActions: string = "add";
-
+  idn: string = " ";
+  nextnode: Tree[] | undefined;
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
   
@@ -38,6 +39,13 @@ export class AppComponent {
   nodeDoubleClicked(eventData: { event: Event, node: Tree }): void {
     this.selectedNode = eventData.node;
     this.nodeName = this.selectedNode.name;
+    this.nextnode = this.selectedNode.children;
+
+    if (this.selectedNode.parentId) this.idn = this.selectedNode.parentId;
+    else this.idn = "0";
+    console.log(this.selectedNode );
+    console.log(this.idn);
+    console.log(this.nextnode );
     if (this.selectedNode.type === 'step') {
       this.activeButtonGroup = 'step';
 
@@ -68,7 +76,6 @@ export class AppComponent {
 
   addTask(){
     this.openNodeDialog(false);
-    
   }
 
   openNodeDialog(editNode: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
@@ -79,7 +86,7 @@ export class AppComponent {
   
     dialogRef.afterClosed().subscribe((result: Tree | undefined) => {
       if (result) {
-        this.treeService.loadTreeData();
+        this.treeService.getTreeData();
       }
     });
   }
@@ -87,7 +94,7 @@ export class AppComponent {
   deleteNode(node: Tree): void {
     if (confirm(`Are you sure you want to delete ${node.name}?`)) {
       this.treeService.deleteNode(node.id).subscribe(() => {
-        this.treeService.loadTreeData(); 
+        this.treeService.getTreeData(); 
       });
     }
   }
@@ -99,12 +106,4 @@ export class AppComponent {
   buttonsDataStep(): { text: string; color: string; action: string }[] {
     return this.buttonService.getButtonsDataSteps();
   }
-
-  
-
-
-
-
-
-
 }

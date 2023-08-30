@@ -19,17 +19,19 @@ export class NodeDialogComponent {
   nodeForm: FormGroup;
   parentNode: Tree | null;
   action: string;
+  children: Tree[] | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<NodeDialogComponent>,
     private fb: FormBuilder,
     private treeService: TreeService,
-    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string },
+    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string }
   ) {
     this.editNode = data.editNode;
     this.parentNode = data.parentNode;
     this.node = { ...data.node };
     this.action = data.action;
+  
    
     this.nodeForm = this.fb.group({
       name: [this.node.name],
@@ -49,14 +51,13 @@ export class NodeDialogComponent {
         type: this.node.type,
         name: this.nodeForm.value.name,
         owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
-        parentId: this.parentNode ? this.parentNode.id : null,
-        children: this.node.children
+        parentId: this.parentNode ? this.node.parentId : null,
       };
       this.treeService.editNode(this.node.id, updatedNode).subscribe((result) => {
         this.dialogRef.close(result);
-
       });
     } else {
+      // this.children = this.node.children;
       if(this.action === 'add'){
         const addedNode: Tree = {
           id: uuidv4(),
@@ -71,10 +72,13 @@ export class NodeDialogComponent {
 
         });
       } else {
+        let id = uuidv4();
           const addedNode: Tree = {
-            id: this.node.id,
+            id: id,
             type: 'task',
             name: this.nodeForm.value.name,
+            parentId: id
+
           };
           this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
             this.dialogRef.close(result);
@@ -83,6 +87,6 @@ export class NodeDialogComponent {
 
       }
     }
-      
   }
 }
+

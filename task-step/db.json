@@ -2,92 +2,67 @@
   "TREE_DATA": [
     {
       "id": 1,
-      "name": "Task_1",
       "type": "task",
-      "children": [
-        {
-          "id": 2,
-          "name": "Step_1_1",
-          "type": "step",
-          "owner": "Marcel",
-          "parentId": 1
-        },
-        {
-          "id": 3,
-          "name": "Step_1_2",
-          "type": "step",
-          "owner": "Joe",
-          "parentId": 1,
-          "children": [
-            {
-              "id": 4,
-              "name": "Step_1_2_1",
-              "type": "step",
-              "owner": "anonymous",
-              "parentId": 3,
-              "children": [
-                {
-                  "id": 5,
-                  "name": "Step_1_2_1_1",
-                  "owner": "anonymous",
-                  "parentId": 4
-                }
-              ]
-            },
-            {
-              "id": 6,
-              "name": "Step_1_2_2",
-              "type": "step",
-              "owner": "anonymous",
-              "parentId": 3
-            }
-          ]
-        }
-      ]
+      "name": "Task_1",
+      "owner": null,
+      "parentId": 1
     },
     {
       "id": 7,
-      "name": "Task_2",
       "type": "task",
-      "children": [
-        {
-          "id": 8,
-          "name": "Step_2_1",
-          "type": "step",
-          "owner": "Bob",
-          "parentId": 7,
-          "children": [
-            {
-              "id": 9,
-              "name": "Step_2_1_1",
-              "type": "step",
-              "owner": "Bob & Alice",
-              "parentId": 8
-            },
-            {
-              "id": 10,
-              "name": "Step_2_1_2",
-              "type": "step",
-              "owner": "Bob & Max",
-              "parentId": 8
-            }
-          ]
-        },
-        {
-          "id": 11,
-          "name": "Step_2_2",
-          "type": "step",
-          "owner": "Joe",
-          "parentId": 7
-        },
-        {
-          "id": 12,
-          "name": "Step_2_3",
-          "type": "step",
-          "owner": "Joe",
-          "parentId": 7
-        }
-      ]
+      "name": "Task_2",
+      "owner": null,
+      "parentId": 7
+    },
+    {
+      "id": 2,
+      "type": "step",
+      "name": "Step_1_1",
+      "owner": "Marcel",
+      "parentId": 1
+    },
+    {
+      "id": 3,
+      "type": "step",
+      "name": "Step_1_2",
+      "owner": "Joe",
+      "parentId": 1
+    },
+    {
+      "id": 5,
+      "type": "step",
+      "name": "Step_1_2_1_1",
+      "owner": "anonymous",
+      "parentId": 4,
+      "children": []
+    },
+    {
+      "id": 6,
+      "name": "Step_1_2_2",
+      "type": "step",
+      "owner": "anonymous",
+      "parentId": 3
+    },
+    {
+      "id": 8,
+      "name": "Step_2_1",
+      "type": "step",
+      "owner": "Bob",
+      "parentId": 7
+    },
+    {
+      "id": 9,
+      "name": "Step_2_1_1",
+      "type": "step",
+      "owner": "Bob & Alice",
+      "parentId": 8
+    },
+    {
+      "id": 10,
+      "name": "Step_2_1_2",
+      "type": "step",
+      "owner": "Bob & Max",
+      "parentId": 8
     }
   ]
 }
