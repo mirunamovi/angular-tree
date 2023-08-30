@@ -42,6 +42,9 @@ The app has a header with a static Button where we can add Tasks, and a section 
 The data from the db.json is lasy-loaded with Angular Material. 
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/f58979ac-16ec-4534-87c1-0dcf8826c459)
 
+Double-click on a Task or Step Node and the header will bring more buttons according to the Node Type and then you can click on those buttons.
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/72540542-ee77-46ed-bf84-ca5a09b622d8)
+
 Add a Task
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/fc70c8da-c986-452b-bcfe-b2cac1bfae3f)
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/a7c3a82e-e85b-4fc7-a0e5-f0125f63b76b)
