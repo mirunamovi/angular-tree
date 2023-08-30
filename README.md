@@ -44,7 +44,7 @@ The data from the db.json is lasy-loaded with Angular Material.
 
 Add a Task
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/fc70c8da-c986-452b-bcfe-b2cac1bfae3f)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/86a311dc-4143-4e7a-9288-39e8c506bf82)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/a7c3a82e-e85b-4fc7-a0e5-f0125f63b76b)
 
 Add a Step to the new Task
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/39653c74-5037-48ee-a1fe-83dc366fbdca)
