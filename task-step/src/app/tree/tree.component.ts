@@ -3,7 +3,6 @@ import {NestedTreeControl} from '@angular/cdk/tree';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { TreeService } from '../tree.service';
 import {Tree} from '../tree.model';
-import { UpdateDbService } from '../update-db.service';
 
 
 interface FlatNode {
@@ -30,7 +29,7 @@ export class TreeComponent implements OnInit{
 
   isTaskNodeClicked = false;
 
-  constructor(private treeService: TreeService, private  updatedb: UpdateDbService) {
+  constructor(private treeService: TreeService) {
 
   }
   

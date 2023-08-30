@@ -43,16 +43,14 @@ export class AppComponent {
 
     if (this.selectedNode.parentId) this.idn = this.selectedNode.parentId;
     else this.idn = "0";
-    console.log(this.selectedNode );
-    console.log(this.idn);
-    console.log(this.nextnode );
+
     if (this.selectedNode.type === 'step') {
       this.activeButtonGroup = 'step';
 
     } else if (this.selectedNode.type === 'task') {
       this.activeButtonGroup = 'task';
 
-    }
+    } else this.activeButtonGroup = null;
     
   }
 

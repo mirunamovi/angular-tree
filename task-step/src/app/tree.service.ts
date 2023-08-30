@@ -3,25 +3,79 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tree } from './tree.model';
 import { BehaviorSubject } from 'rxjs';
-import { UpdateDbService } from './update-db.service';
+// import { UpdateDbService } from './update-db.service';
+
+interface OutputNode extends Tree {
+  children?: OutputNode[];
+}
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TreeService {
 
-
-  private apiUrl = 'http://localhost:3000/TREE_DATA'; 
   dataSource = new BehaviorSubject<Tree[]>([]);
+  dataSource2 = new BehaviorSubject<Tree[]>([]);
   data = this.dataSource.asObservable();
-
+  
+  private apiUrl = 'http://localhost:3000/TREE_DATA'; 
+  flatData2: Tree[] = []; 
+ 
+  constructor(private http: HttpClient) {}
+  
+   buildTree(flatData: Tree[]): BehaviorSubject<Tree[]> {
+     const treeMap: Record<string, OutputNode> = {};
+     const roots: OutputNode[] = [];
+     flatData.forEach(node => {
+       const outputNode: Tree = { ...node,children: []};
+       treeMap[node.id] = outputNode;
+       if (node.parentId === node.id) {
+         roots.push(outputNode);
+       } else {
+         const parent = treeMap[node.parentId as string];
+         if (parent) {
+           if (!parent.children) {
+             parent.children = [];
+           }
+           parent.children.push(outputNode);
+         }
+       }
+     });
+ 
+     const newData = new BehaviorSubject<Tree[]> (roots);
+     return newData;   
+   }  
+ 
+ 
+ getTreeData2(): Observable<Tree[]> {
+   return this.http.get<Tree[]>(`${this.apiUrl}`);
+ }
+ 
+ loadTreeData(){
+    let flatData3 : Tree[] = [];  
+  this.getTreeData2().subscribe( data => {
+     flatData3 = data;
+     this.dataSource = this.buildTree(data);          
+     this.dataSource.subscribe( data => {
+       this.dataSource2.next(data);  
+  });
+   } ); 
+ }
+ 
+ 
+   updateDatabase() {  
+ 
+     this.loadTreeData();   
+ 
+     const newData = new BehaviorSubject<Tree[]> (this.flatData2);
+ 
+     return this.dataSource2;
+   }
   
 
-  constructor(private http: HttpClient, private updatedb: UpdateDbService) {}
-
-
    getTreeData(): BehaviorSubject<Tree[]>  {    
-    return this.updatedb.updateDatabase();
+    return this.updateDatabase();
   }
 
 
