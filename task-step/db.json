@@ -3,39 +3,30 @@
     {
       "id": 1,
       "type": "task",
-      "name": "task_1",
+      "name": "Task_1",
       "owner": null,
       "parentId": 1
     },
     {
       "id": 7,
-      "name": "Task_2",
       "type": "task",
+      "name": "Task_2",
       "owner": null,
-      "parentId": 7,
-      "children": []
+      "parentId": 7
     },
     {
       "id": 2,
       "type": "step",
       "name": "Step_1_1",
       "owner": "Marcel",
-      "parentId": 1,
-      "children": []
-    },
-    {
-      "id": 3,
-      "name": "Step_1_2",
-      "type": "step",
-      "owner": "Joe",
       "parentId": 1
     },
     {
-      "id": 4,
+      "id": 3,
       "type": "step",
-      "name": "Step_1_2_1",
-      "owner": "miruna",
-      "parentId": 3
+      "name": "Step_1_2",
+      "owner": "Joe",
+      "parentId": 1
     },
     {
       "id": 5,
@@ -72,27 +63,6 @@
       "type": "step",
       "owner": "Bob & Max",
       "parentId": 8
-    },
-    {
-      "id": "0206f33b-518f-4bbf-abb8-3b8e69753088",
-      "type": "step",
-      "name": "Step_1_2_3",
-      "owner": "Joe2",
-      "parentId": 3
-    },
-    {
-      "id": "6d336a27-ad39-4cbb-a0aa-63b7ebf60882",
-      "type": "step",
-      "name": "Step_1_2_3_1",
-      "owner": "Joe3",
-      "parentId": "0206f33b-518f-4bbf-abb8-3b8e69753088"
-    },
-    {
-      "id": "b62eff43-a6e8-48ea-9bcc-e2ff4414a15d",
-      "type": "step",
-      "name": "Step_1_2_3_1_1",
-      "owner": "miruna",
-      "parentId": "6d336a27-ad39-4cbb-a0aa-63b7ebf60882"
     }
   ]
 }

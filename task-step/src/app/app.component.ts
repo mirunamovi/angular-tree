@@ -5,17 +5,6 @@ import { TreeService } from './tree.service';
 import { NodeDialogComponent } from './node-dialog/node-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
-// interface Step {
-//   name: string;
-//   owner: string;
-//   children?: Step[];
-// }
-
-// interface Task {
-//   name: string;
-//   children?: Step[];
-// } 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,7 +19,6 @@ export class AppComponent {
   addTaskText: string = "Add Task";
   addTaskColor: string = "green";
   addTaskActions: string = "add";
-  @Input() isAdd: boolean = false;
   idn: string = " ";
   nextnode: Tree[] | undefined;
 
@@ -98,7 +86,7 @@ export class AppComponent {
   
     dialogRef.afterClosed().subscribe((result: Tree | undefined) => {
       if (result) {
-        this.treeService.loadTreeData();
+        this.treeService.getTreeData();
       }
     });
   }
@@ -106,7 +94,7 @@ export class AppComponent {
   deleteNode(node: Tree): void {
     if (confirm(`Are you sure you want to delete ${node.name}?`)) {
       this.treeService.deleteNode(node.id).subscribe(() => {
-        this.treeService.loadTreeData(); 
+        this.treeService.getTreeData(); 
       });
     }
   }
@@ -118,12 +106,4 @@ export class AppComponent {
   buttonsDataStep(): { text: string; color: string; action: string }[] {
     return this.buttonService.getButtonsDataSteps();
   }
-
-  
-
-
-
-
-
-
 }
