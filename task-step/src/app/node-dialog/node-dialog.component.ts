@@ -19,17 +19,23 @@ export class NodeDialogComponent {
   nodeForm: FormGroup;
   parentNode: Tree | null;
   action: string;
+  children: Tree[] | undefined;
+  node2: Tree = {  id: "112",
+                   name: "child1",
+                   type: 'step',
+                   parentId: "111" };
 
   constructor(
     public dialogRef: MatDialogRef<NodeDialogComponent>,
     private fb: FormBuilder,
     private treeService: TreeService,
-    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string },
+    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string }
   ) {
     this.editNode = data.editNode;
     this.parentNode = data.parentNode;
     this.node = { ...data.node };
     this.action = data.action;
+  
    
     this.nodeForm = this.fb.group({
       name: [this.node.name],
@@ -49,40 +55,31 @@ export class NodeDialogComponent {
         type: this.node.type,
         name: this.nodeForm.value.name,
         owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
-        parentId: this.parentNode ? this.parentNode.id : null,
-        children: this.node.children
+        parentId: this.parentNode ? this.node.parentId : null,
+        //children: this.node.children
+       // level: this.node.level,
+       // expandable: this.node.expandable
       };
       this.treeService.editNode(this.node.id, updatedNode).subscribe((result) => {
         this.dialogRef.close(result);
-
       });
     } else {
-      if(this.action === 'add'){
-        const addedNode: Tree = {
-          id: uuidv4(),
-          type: 'step',
-          name: this.nodeForm.value.name,
-          owner: this.nodeForm.value.owner,
-          parentId: this.parentNode ? this.parentNode.id : null,
+       this.children = this.node.children;
+       this.children?.push(this.node2);       
+      const addedNode: Tree = {
+        id: uuidv4(),
+        type: this.node.type,
+        name: this.nodeForm.value.name,
+        owner: this.node.type === 'step' ? this.nodeForm.value.owner : null,
+        parentId: this.parentNode ? this.parentNode.id : null,
+        //children: this.children
 
-        };
-        this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
-          this.dialogRef.close(result);
-
-        });
-      } else {
-          const addedNode: Tree = {
-            id: this.node.id,
-            type: 'task',
-            name: this.nodeForm.value.name,
-          };
-          this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
-            this.dialogRef.close(result);
-
-          });
-
-      }
+       // level: this.node.level + 1,
+       // expandable: false
+      };
+      this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
+        this.dialogRef.close(result);
+      });
     }
-      
   }
 }

@@ -5,6 +5,17 @@ import { TreeService } from './tree.service';
 import { NodeDialogComponent } from './node-dialog/node-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
+// interface Step {
+//   name: string;
+//   owner: string;
+//   children?: Step[];
+// }
+
+// interface Task {
+//   name: string;
+//   children?: Step[];
+// } 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,7 +30,9 @@ export class AppComponent {
   addTaskText: string = "Add Task";
   addTaskColor: string = "green";
   addTaskActions: string = "add";
-
+  @Input() isAdd: boolean = false;
+  idn: string = " ";
+  nextnode: Tree[] | undefined;
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
   
@@ -38,6 +51,13 @@ export class AppComponent {
   nodeDoubleClicked(eventData: { event: Event, node: Tree }): void {
     this.selectedNode = eventData.node;
     this.nodeName = this.selectedNode.name;
+    this.nextnode = this.selectedNode.children;
+
+    if (this.selectedNode.parentId) this.idn = this.selectedNode.parentId;
+    else this.idn = "0";
+    console.log(this.selectedNode );
+    console.log(this.idn);
+    console.log(this.nextnode );
     if (this.selectedNode.type === 'step') {
       this.activeButtonGroup = 'step';
 
@@ -68,7 +88,6 @@ export class AppComponent {
 
   addTask(){
     this.openNodeDialog(false);
-    
   }
 
   openNodeDialog(editNode: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
