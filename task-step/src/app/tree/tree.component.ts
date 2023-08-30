@@ -1,15 +1,9 @@
 import { Component,  OnInit, Output, EventEmitter } from '@angular/core';
 import {NestedTreeControl} from '@angular/cdk/tree';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject} from 'rxjs';
 import { TreeService } from '../tree.service';
 import {Tree} from '../tree.model';
 
-
-interface FlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
 
 @Component({
   selector: 'app-tree',
@@ -22,22 +16,16 @@ export class TreeComponent implements OnInit{
 
   treeControl = new NestedTreeControl<Tree>(node => node.children);
   dataSource = new BehaviorSubject<Tree[]>([]);
-  dataRefresher: any;
 
   @Output() nodeDoubleClick = new EventEmitter<{ event: Event, node: any }>();
-  @Output() nodeDoubleClickforSelected = new EventEmitter<{ event: Event, node: any }>();
 
   isTaskNodeClicked = false;
 
-  constructor(private treeService: TreeService) {
-
-  }
+  constructor(private treeService: TreeService) {}
   
   
   ngOnInit() {
     this.fetchData();
-         
-   
   }
 
   fetchData() {
@@ -51,7 +39,5 @@ export class TreeComponent implements OnInit{
     this.isTaskNodeClicked === !this.isTaskNodeClicked;
     this.nodeDoubleClick.emit({ event, node });
   }
-
-  
 }
 

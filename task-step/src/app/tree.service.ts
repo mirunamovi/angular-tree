@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tree } from './tree.model';
 import { BehaviorSubject } from 'rxjs';
-// import { UpdateDbService } from './update-db.service';
 
 interface OutputNode extends Tree {
   children?: OutputNode[];
@@ -13,6 +12,7 @@ interface OutputNode extends Tree {
 @Injectable({
   providedIn: 'root'
 })
+
 export class TreeService {
 
   dataSource = new BehaviorSubject<Tree[]>([]);
@@ -20,7 +20,6 @@ export class TreeService {
   data = this.dataSource.asObservable();
   
   private apiUrl = 'http://localhost:3000/TREE_DATA'; 
-  flatData2: Tree[] = []; 
  
   constructor(private http: HttpClient) {}
   
@@ -53,23 +52,17 @@ export class TreeService {
  }
  
  loadTreeData(){
-    let flatData3 : Tree[] = [];  
-  this.getTreeData2().subscribe( data => {
-     flatData3 = data;
-     this.dataSource = this.buildTree(data);          
-     this.dataSource.subscribe( data => {
-       this.dataSource2.next(data);  
-  });
+    this.getTreeData2().subscribe( data => {
+      this.dataSource = this.buildTree(data);          
+      this.dataSource.subscribe( data => {
+        this.dataSource2.next(data);  
+    });
    } ); 
  }
  
  
    updateDatabase() {  
- 
-     this.loadTreeData();   
- 
-     const newData = new BehaviorSubject<Tree[]> (this.flatData2);
- 
+     this.loadTreeData();    
      return this.dataSource2;
    }
   

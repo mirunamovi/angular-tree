@@ -19,7 +19,6 @@ export class NodeDialogComponent {
   nodeForm: FormGroup;
   parentNode: Tree | null;
   action: string;
-  children: Tree[] | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<NodeDialogComponent>,
@@ -34,8 +33,11 @@ export class NodeDialogComponent {
   
    
     this.nodeForm = this.fb.group({
-      name: [this.node.name],
-      owner: [this.node.owner],
+      name: [],
+      owner: [],
+
+      // name: [this.node.name],
+      // owner: [this.node.owner],
     });
   }
 
@@ -56,9 +58,7 @@ export class NodeDialogComponent {
       this.treeService.editNode(this.node.id, updatedNode).subscribe((result) => {
         this.dialogRef.close(result);
       });
-    } else {
-      // this.children = this.node.children;
-      if(this.action === 'add'){
+    } else if(this.action === 'add'){
         const addedNode: Tree = {
           id: uuidv4(),
           type: 'step',
@@ -88,5 +88,5 @@ export class NodeDialogComponent {
       }
     }
   }
-}
+
 

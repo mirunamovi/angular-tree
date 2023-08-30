@@ -33,8 +33,7 @@
       "type": "step",
       "name": "Step_1_2_1_1",
       "owner": "anonymous",
-      "parentId": 4,
-      "children": []
+      "parentId": 4
     },
     {
       "id": 6,

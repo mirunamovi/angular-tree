@@ -19,8 +19,6 @@ export class AppComponent {
   addTaskText: string = "Add Task";
   addTaskColor: string = "green";
   addTaskActions: string = "add";
-  idn: string = " ";
-  nextnode: Tree[] | undefined;
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
   
@@ -33,16 +31,11 @@ export class AppComponent {
     } else {
       return this.buttonService.getButtonsDataSteps();
     }
-    return []; 
   }
 
   nodeDoubleClicked(eventData: { event: Event, node: Tree }): void {
     this.selectedNode = eventData.node;
     this.nodeName = this.selectedNode.name;
-    this.nextnode = this.selectedNode.children;
-
-    if (this.selectedNode.parentId) this.idn = this.selectedNode.parentId;
-    else this.idn = "0";
 
     if (this.selectedNode.type === 'step') {
       this.activeButtonGroup = 'step';
