@@ -38,7 +38,6 @@ Run `npn run json:server` for server.
 
 The app has a header with a static Button where we can add Tasks, and a section with the List of Tasks.
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/ea4cabee-f9c5-43dc-846b-b86e9ffd8342)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/3ffb8f9a-9a1d-41e9-a0bf-852ab0965071)
 
 The data from the db.json is lasy-loaded with Angular Material. 
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/f58979ac-16ec-4534-87c1-0dcf8826c459)
