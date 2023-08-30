@@ -43,17 +43,27 @@ The app has a header with a static Button where we can add Tasks, and a section 
 The data from the db.json is lasy-loaded with Angular Material. 
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/f58979ac-16ec-4534-87c1-0dcf8826c459)
 
-Double click on a Task node and the meniu of buttons for the Task operation appears.
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/22f6be71-2116-430e-ab3c-c9a7cdc710aa)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/e43cdc87-c00a-4038-aa31-673ab68350c1)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/61fe3b5a-5161-4c13-a93f-3fb84f6b3819)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/cbb5c1c8-5a74-48a0-a397-0d1e95838813)
+Add a Task
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/fc70c8da-c986-452b-bcfe-b2cac1bfae3f)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/68a73b01-ecf1-4379-801b-70e09e9bee44)
 
-Double click on a Step node and the meniu of buttons for the Step operation appears.
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/ed8013f5-c198-4a4f-915e-5ed52a26ef4b)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/6e539061-3af5-4446-9a7c-8f02851e80dc)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/5c8180a3-a032-4805-a12e-4b4c10a25099)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/e6574196-82c7-40dc-ae8f-b2cdb6f60b7a)
+Add a Step to the new Task
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/39653c74-5037-48ee-a1fe-83dc366fbdca)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/832563f4-edfa-44ac-aaa1-6d582163a5a7)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/5f933e16-fb1b-489d-9ec9-4b8d92c65476)
+
+Edit the new Task
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/f1291c81-22e2-4a2a-9e3d-644d6b34dae4)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/463de5aa-199b-47ce-96eb-465fb0c9506f)
+
+Edit the new Step
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/c32ecb62-f1f0-4d9a-b0d1-f04264936a2d)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/0311375f-497e-4814-bb49-0881b99e2ad1)
+
+Delete the new Task
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/b239747d-1cdf-4154-a579-b96d4c3ba021)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/a1337a0b-537e-4a18-8058-e4a0e91a4f83)
+
 
 
 
