@@ -56,7 +56,7 @@ Add a Step to the new Task
 
 Edit the new Task
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/f1291c81-22e2-4a2a-9e3d-644d6b34dae4)
-![image](https://github.com/mirunamovi/angular-tree/assets/90201953/463de5aa-199b-47ce-96eb-465fb0c9506f)
+![image](https://github.com/mirunamovi/angular-tree/assets/90201953/95b5701a-36bb-4ff2-9952-10ed4f304657)
 
 Edit the new Step
 ![image](https://github.com/mirunamovi/angular-tree/assets/90201953/c32ecb62-f1f0-4d9a-b0d1-f04264936a2d)
