@@ -32,7 +32,7 @@ json-server --watch db.json
 ```
 Run `ng serve` for Angular.
 
-Run `npn run json:server` for server.
+Run `npm run json:server` for server.
 
 ## Preview
 
