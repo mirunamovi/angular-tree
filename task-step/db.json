@@ -62,6 +62,13 @@
       "type": "step",
       "owner": "Bob & Max",
       "parentId": 8
+    },
+    {
+      "id": "fd3f2bfa-5814-407f-9b0c-a22446a1f063",
+      "type": "step",
+      "name": "STEP",
+      "owner": "MIRUNA",
+      "parentId": "3fbcd003-fb35-4eb1-8842-1356a81aa938"
     }
   ]
 }
