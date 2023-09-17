@@ -29,16 +29,9 @@
       "parentId": 1
     },
     {
-      "id": 5,
-      "type": "step",
-      "name": "Step_1_2_1_1",
-      "owner": "anonymous",
-      "parentId": 4
-    },
-    {
       "id": 6,
-      "name": "Step_1_2_2",
       "type": "step",
+      "name": "Step_1_2_1",
       "owner": "anonymous",
       "parentId": 3
     },
@@ -64,11 +57,32 @@
       "parentId": 8
     },
     {
-      "id": "fd3f2bfa-5814-407f-9b0c-a22446a1f063",
+      "id": "682e1c3e-21ad-462f-931f-8fcfc591b327",
       "type": "step",
-      "name": "STEP",
-      "owner": "MIRUNA",
-      "parentId": "3fbcd003-fb35-4eb1-8842-1356a81aa938"
+      "name": "Step_1_2_1_1",
+      "owner": "anonymous",
+      "parentId": 6
+    },
+    {
+      "id": "6a322d82-8e75-4dc4-bbde-5301ed9c1c8c",
+      "type": "step",
+      "name": "Step_1_2_2",
+      "owner": "anonymous",
+      "parentId": 3
+    },
+    {
+      "id": "8c1bd7a5-8e16-4e4c-8910-4371139469e3",
+      "type": "step",
+      "name": "Step_2_2",
+      "owner": "Joe",
+      "parentId": 7
+    },
+    {
+      "id": "e9f23376-73d5-48be-beaa-f5fdebef3987",
+      "type": "step",
+      "name": "Step_2_3",
+      "owner": "Joe",
+      "parentId": 7
     }
   ]
 }

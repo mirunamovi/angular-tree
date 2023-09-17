@@ -26,6 +26,8 @@ export class TreeComponent implements OnInit{
   
   ngOnInit() {
     this.fetchData();
+    console.log(this.dataSource);
+
   }
 
   fetchData() {
