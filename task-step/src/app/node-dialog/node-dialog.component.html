@@ -1,6 +1,6 @@
 <div mat-dialog-content>
-  <h2 mat-dialog-title>{{ editNode ? 'Edit Node' : 'Add Node'}}</h2>
-  <form [formGroup]="nodeForm">
+  <h2 mat-dialog-title>{{ deleteNode ? 'Delete Node' : editNode ? 'Edit Node' : 'Add Node'}}</h2>
+  <form *ngIf="deleteNode == false" [formGroup]="nodeForm">
     <mat-form-field>
       <input matInput formControlName="name" placeholder="Name" />
     </mat-form-field>
@@ -8,8 +8,11 @@
       <input matInput formControlName="owner" placeholder="Owner" />
     </mat-form-field>
   </form>
+  <mat-form-field *ngIf="deleteNode == true">
+    Are you sure you want to delete {{node.name}}?
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" (click)="onSave()">{{ editNode ? 'Save' : 'Add' }}</button> 
+  <button mat-button color="primary" (click)="onSave()">{{ deleteNode ? 'Delete' : editNode ? 'Save' : 'Add' }}</button> 
 </div>

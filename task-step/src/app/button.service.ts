@@ -21,6 +21,9 @@ export class ButtonService {
 
   ];
 
+  addTaskButton = { text: 'Add Task', color: 'green', action: 'add' } 
+  
+
   getButtonsDataTasks(): { text: string; color: string; action: string }[] {
     return this.buttonsDataTasks;
   }

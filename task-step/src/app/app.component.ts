@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { ButtonService } from './button.service';
 import { Tree } from './tree.model';
 import { TreeService } from './tree.service';
@@ -16,12 +16,10 @@ export class AppComponent {
   activeButtonGroup: 'task' | 'step' | null = null; 
   selectedNode: Tree | null = null;
   nodeName: string = " ";
-  addTaskText: string = "Add Task";
-  addTaskColor: string = "green";
-  addTaskActions: string = "add";
 
   constructor(private dialog: MatDialog, private buttonService: ButtonService, private treeService: TreeService) {}
   
+  addTaskButton = this.buttonService.addTaskButton;
 
   getButtonsData(): { text: string; color: string; action: string }[] {
     if (this.activeButtonGroup === 'task') {
@@ -54,40 +52,33 @@ export class AppComponent {
   
     switch (action) {
       case 'add':
-        this.openNodeDialog(false, this.selectedNode, this.selectedNode, action);
+        this.openNodeDialog(false, false, this.selectedNode, this.selectedNode, action);
         break;
       case 'edit':
-        this.openNodeDialog(true, this.selectedNode, this.selectedNode, action);
+        this.openNodeDialog(true, false, this.selectedNode, this.selectedNode, action);
         break;
       case 'delete':
-        this.deleteNode(this.selectedNode);
+        this.openNodeDialog(false, true, this.selectedNode, this.selectedNode, action);
         break;
     }
   }
 
   addTask(){
-    this.openNodeDialog(false);
+    this.openNodeDialog(false, false);
   }
 
-  openNodeDialog(editNode: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
+  openNodeDialog(editNode: boolean, deleteNode?: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
     const dialogRef = this.dialog.open(NodeDialogComponent, {
       width: '250px',
-      data: { editNode, parentNode, node, action},
+      data: {editNode,  deleteNode, parentNode, node, action},
     });
   
     dialogRef.afterClosed().subscribe((result: Tree | undefined) => {
       if (result) {
         this.treeService.getTreeData();
+        this.activeButtonGroup = null; 
       }
     });
-  }
-
-  deleteNode(node: Tree): void {
-    if (confirm(`Are you sure you want to delete ${node.name}?`)) {
-      this.treeService.deleteNode(node.id).subscribe(() => {
-        this.treeService.getTreeData(); 
-      });
-    }
   }
 
   buttonsDataTask(): { text: string; color: string; action: string }[] {

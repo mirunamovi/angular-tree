@@ -13,7 +13,7 @@ export class ButtonComponent implements OnInit{
 
   @Output() btnClick = new EventEmitter();
 
-  constructor(private buttonService: ButtonService) {}
+  constructor() {}
 
   ngOnInit(): void {
 

@@ -19,17 +19,20 @@ export class NodeDialogComponent {
   nodeForm: FormGroup;
   parentNode: Tree | null;
   action: string;
+  deleteNode: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<NodeDialogComponent>,
     private fb: FormBuilder,
     private treeService: TreeService,
-    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string }
+    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string, deleteNode: boolean }
   ) {
     this.editNode = data.editNode;
     this.parentNode = data.parentNode;
     this.node = { ...data.node };
     this.action = data.action;
+    this.deleteNode = data.deleteNode;
+
   
     if(this.action === 'add'){
       this.nodeForm = this.fb.group({
@@ -51,8 +54,11 @@ export class NodeDialogComponent {
   }
 
   onSave(): void {
-    
-    if (this.editNode) {
+    if(this.deleteNode){
+      this.treeService.deleteNode(this.node.id).subscribe((result) => {
+        this.dialogRef.close(result);
+      });
+    }else if (this.editNode) {
       const updatedNode: Tree = {
         id: this.node.id,
         type: this.node.type,

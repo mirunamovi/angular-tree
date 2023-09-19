@@ -17,7 +17,7 @@
     {
       "id": 2,
       "type": "step",
-      "name": "Step_1_1",
+      "name": "Step_1_2",
       "owner": "Marcel",
       "parentId": 1
     },
