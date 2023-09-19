@@ -20,7 +20,6 @@ export class ButtonComponent implements OnInit{
   }
 
   onClick() {
-    // console.log("OnClick");
     this.btnClick.emit();
   }
 

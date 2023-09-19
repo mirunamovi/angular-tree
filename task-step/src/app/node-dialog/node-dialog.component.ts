@@ -31,14 +31,19 @@ export class NodeDialogComponent {
     this.node = { ...data.node };
     this.action = data.action;
   
-   
-    this.nodeForm = this.fb.group({
-      name: [],
-      owner: [],
+    if(this.action === 'add'){
+      this.nodeForm = this.fb.group({
+        name: [],
+        owner: [],
+      });
+    }else {
+      this.nodeForm = this.fb.group({
+      name: [this.node.name],
+      owner: [this.node.owner],
+      });
+    }
 
-      // name: [this.node.name],
-      // owner: [this.node.owner],
-    });
+    dialogRef.disableClose = true;
   }
 
   onCancel(): void {
@@ -67,7 +72,7 @@ export class NodeDialogComponent {
           parentId: this.parentNode ? this.parentNode.id : null,
 
         };
-        this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
+        this.treeService.addNode(addedNode).subscribe((result) => {
           this.dialogRef.close(result);
 
         });
@@ -80,7 +85,7 @@ export class NodeDialogComponent {
             parentId: id
 
           };
-          this.treeService.addNode(this.node.parentId, addedNode).subscribe((result) => {
+          this.treeService.addNode(addedNode).subscribe((result) => {
             this.dialogRef.close(result);
 
           });

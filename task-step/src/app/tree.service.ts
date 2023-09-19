@@ -75,7 +75,7 @@ export class TreeService {
   }
 
 
-  addNode(parentId: string | null | undefined, newNode: Tree): Observable<Tree> {
+  addNode( newNode: Tree): Observable<Tree> {
     return this.http.post<Tree>(`${this.apiUrl}`, newNode);
   }
 
