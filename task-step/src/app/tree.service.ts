@@ -4,11 +4,6 @@ import { Observable} from 'rxjs';
 import { Tree } from './tree.model';
 import { BehaviorSubject } from 'rxjs';
 
-interface OutputNode extends Tree {
-  children?: OutputNode[];
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +18,8 @@ export class TreeService {
   constructor(private http: HttpClient) {}
   
   buildTree(flatData: Tree[]): BehaviorSubject<Tree[]> {
-     const treeMap: Record<string, OutputNode> = {};
-     const roots: OutputNode[] = [];
+     const treeMap: Record<string, Tree> = {};
+     const roots: Tree[] = [];
      flatData.forEach(node => {
        const outputNode: Tree = { ...node,children: []};
        treeMap[node.id] = outputNode;
@@ -50,14 +45,14 @@ export class TreeService {
    }  
  
  
- getTreeData2(): Observable<Tree[]> {
+ getFlatTreeData(): Observable<Tree[]> {
    return this.http.get<Tree[]>(`${this.apiUrl}`);
  }
  
  loadTreeData(){
-    this.getTreeData2().subscribe( data => {
+    this.getFlatTreeData().subscribe(data => {
       this.dataSource = this.buildTree(data);     
-      this.dataSource.subscribe( data => {
+      this.dataSource.subscribe(data => {
         this.dataSource2.next(data);  
     });
    } ); 

@@ -8,7 +8,7 @@
         ></app-button>
       </span>
         <span>
-            <ng-container *ngIf="((activeButtonGroup === 'task') || (activeButtonGroup === 'step'))"> 
+            <ng-container *ngIf="activeButtonGroup !== null"> 
               <app-button
                 *ngFor="let button of getButtonsData()"
                 [text]="button.text + nodeName"

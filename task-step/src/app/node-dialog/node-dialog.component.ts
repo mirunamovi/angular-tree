@@ -25,7 +25,7 @@ export class NodeDialogComponent {
     public dialogRef: MatDialogRef<NodeDialogComponent>,
     private fb: FormBuilder,
     private treeService: TreeService,
-    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, parentNode: Tree | null, node: Tree, action: string, deleteNode: boolean }
+    @Inject(MAT_DIALOG_DATA) public data: { editNode: boolean, deleteNode: boolean, parentNode: Tree | null, node: Tree, action: string}
   ) {
     this.editNode = data.editNode;
     this.parentNode = data.parentNode;

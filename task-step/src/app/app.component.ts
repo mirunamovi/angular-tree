@@ -24,11 +24,9 @@ export class AppComponent {
   getButtonsData(): { text: string; color: string; action: string }[] {
     if (this.activeButtonGroup === 'task') {
       return this.buttonService.getButtonsDataTasks();
-    } else if (this.activeButtonGroup === 'step') {
-      return this.buttonService.getButtonsDataSteps();
     } else {
       return this.buttonService.getButtonsDataSteps();
-    }
+    } 
   }
 
   nodeDoubleClicked(eventData: { event: Event, node: Tree }): void {
@@ -67,10 +65,10 @@ export class AppComponent {
     this.openNodeDialog(false, false);
   }
 
-  openNodeDialog(editNode: boolean, deleteNode?: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
+  openNodeDialog(editNode: boolean, deleteNode: boolean, parentNode?: Tree | null, node?: Tree, action?: string): void {
     const dialogRef = this.dialog.open(NodeDialogComponent, {
       width: '250px',
-      data: {editNode,  deleteNode, parentNode, node, action},
+      data: {editNode, deleteNode, parentNode, node, action},
     });
   
     dialogRef.afterClosed().subscribe((result: Tree | undefined) => {
