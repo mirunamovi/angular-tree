@@ -1,4 +1,5 @@
 # angular-tree
+Angular-Tree is a FullStack Web Application with Angular, NodeJS and JSON Server.
 
 ## Run Locally
 
